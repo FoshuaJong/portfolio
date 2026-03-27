@@ -74,6 +74,8 @@
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
+      /* Pad the content down by the safe area height */
+      padding-top: calc(16px + env(safe-area-inset-top));
     }
 
     nav .container {
@@ -1078,8 +1080,7 @@
         <div class="contact-text reveal">
           <p>
             I'm always up for conversations about optimisation, energy systems, data,
-            or interesting engineering problems. Based in New Zealand, relocating to
-            Auckland.
+            or interesting engineering problems. Based in Auckland, New Zealand.
           </p>
         </div>
         <ul class="contact-links reveal">
