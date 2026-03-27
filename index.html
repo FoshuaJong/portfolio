@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Josh Fong — Operations Research Engineer</title>
+  <meta name="description" content="Operations Research Engineer specialising in mathematical optimisation, scheduling systems, and data analytics for critical infrastructure.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0C0C0E;
+      --bg-elevated: #141418;
+      --bg-card: #1A1A20;
+      --text-primary: #E8E6E3;
+      --text-secondary: #9B9A97;
+      --text-muted: #5C5B59;
+      --accent: #C45D3E;
+      --accent-glow: rgba(196, 93, 62, 0.15);
+      --border: rgba(255,255,255,0.06);
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body: 'Outfit', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: var(--text-muted) transparent;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text-primary);
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: var(--text-primary);
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section { padding: 6rem 0; }
+
+    /* --- NAV --- */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem 0;
+      background: rgba(12, 12, 14, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-mark {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-mark span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a:hover { color: var(--text-primary); }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 20px;
+      height: 1.5px;
+      background: var(--text-secondary);
+      margin: 5px 0;
+      transition: all 0.3s ease;
+    }
+
+    /* --- HERO --- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding-top: 5rem;
+    }
+
+    .hero-content { position: relative; z-index: 2; }
+
+    .hero-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.2s;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 400;
+      line-height: 1.08;
+      color: var(--text-primary);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.4s;
+    }
+
+    .hero h1 .thin {
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.45em;
+      display: block;
+      margin-top: 0.5rem;
+    }
+
+    .hero-text {
+      max-width: 560px;
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.6s;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.8s;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      background: var(--accent);
+      color: var(--text-primary);
+      text-decoration: none;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background: #d4694c;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 30px rgba(196, 93, 62, 0.25);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      background: transparent;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--text-muted);
+      color: var(--text-primary);
+    }
+
+    .hero-grid-bg {
+      position: absolute;
+      top: 0; right: -10%;
+      width: 60%;
+      height: 100%;
+      opacity: 0.035;
+      background-image:
+        linear-gradient(var(--text-muted) 1px, transparent 1px),
+        linear-gradient(90deg, var(--text-muted) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse at 60% 50%, black 20%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at 60% 50%, black 20%, transparent 70%);
+    }
+
+    /* --- SECTION HEADERS --- */
+    .section-header { margin-bottom: 4rem; }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    /* --- ABOUT --- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .about-text strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      padding: 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      transition: border-color 0.3s ease;
+    }
+
+    .stat-card:hover { border-color: rgba(196, 93, 62, 0.3); }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* --- SKILLS --- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .skill-card {
+      padding: 2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .skill-card:hover::before { transform: scaleX(1); }
+
+    .skill-card:hover {
+      border-color: rgba(196, 93, 62, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .skill-icon {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .skill-card h3 {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+
+    .skill-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .skill-tags {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .skill-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 0.25rem 0.6rem;
+      background: rgba(196, 93, 62, 0.08);
+      color: var(--accent);
+      letter-spacing: 0.03em;
+    }
+
+    /* --- PROJECTS --- */
+    .project-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      padding: 3.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+      transition: border-color 0.3s ease;
+      align-items: center;
+    }
+
+    .project-card:hover { border-color: rgba(196, 93, 62, 0.2); }
+
+    .project-number {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      margin-bottom: 1rem;
+    }
+
+    .project-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      line-height: 1.25;
+    }
+
+    .project-card p {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.7;
+    }
+
+    .project-detail-list {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-detail-list li {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding: 0.4rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .project-detail-list li::before {
+      content: '→';
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .project-tech span {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+    }
+
+    .project-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+      position: relative;
+    }
+
+    .project-visual-inner {
+      width: 100%;
+      height: 260px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .schedule-viz {
+      width: 85%;
+      height: 80%;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 1rem;
+    }
+
+    .schedule-row {
+      display: flex;
+      gap: 4px;
+      flex: 1;
+      align-items: center;
+    }
+
+    .schedule-row-label {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      color: var(--text-muted);
+      width: 28px;
+      flex-shrink: 0;
+      text-align: right;
+      padding-right: 6px;
+    }
+
+    .schedule-bar {
+      height: 100%;
+      border-radius: 1px;
+      opacity: 0;
+      animation: barAppear 0.5s ease forwards;
+    }
+
+    @keyframes barAppear { to { opacity: 1; } }
+
+    .dataflow-viz {
+      width: 85%;
+      height: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .dataflow-node {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      padding: 0.4rem 1rem;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      text-align: center;
+      opacity: 0;
+      animation: nodeAppear 0.4s ease forwards;
+    }
+
+    .dataflow-node.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-glow);
+    }
+
+    .dataflow-arrow {
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      opacity: 0;
+      animation: nodeAppear 0.3s ease forwards;
+    }
+
+    @keyframes nodeAppear { to { opacity: 1; } }
+
+    .maritime-viz {
+      width: 90%;
+      height: 85%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .maritime-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      gap: 3px;
+      width: 100%;
+      height: 100%;
+    }
+
+    .maritime-cell {
+      background: rgba(74, 123, 157, 0.08);
+      border: 1px solid rgba(74, 123, 157, 0.12);
+      position: relative;
+      opacity: 0;
+      animation: nodeAppear 0.3s ease forwards;
+    }
+
+    .maritime-cell.detected {
+      border-color: var(--accent);
+      background: var(--accent-glow);
+    }
+
+    .maritime-cell.detected::after {
+      content: '';
+      position: absolute;
+      top: 3px; left: 3px; right: 3px; bottom: 3px;
+      border: 1px solid var(--accent);
+      opacity: 0.6;
+    }
+
+    .maritime-cell .cell-label {
+      position: absolute;
+      bottom: 2px;
+      right: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.45rem;
+      color: var(--text-muted);
+      opacity: 0.6;
+    }
+
+    .maritime-cell.detected .cell-label {
+      color: var(--accent);
+      opacity: 1;
+    }
+
+    .stack-viz {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      line-height: 1;
+    }
+
+    .stack-node {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      animation: nodeAppear 0.4s ease forwards;
+    }
+
+    .stack-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .stack-line {
+      width: 1px;
+      height: 16px;
+      background: var(--border);
+      opacity: 0;
+      animation: nodeAppear 0.3s ease forwards;
+    }
+
+    /* --- CONTACT --- */
+    #contact { border-top: 1px solid var(--border); }
+
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-text p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      max-width: 480px;
+    }
+
+    .contact-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-links a {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.25s ease;
+      padding: 1rem 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+    }
+
+    .contact-links a:hover {
+      color: var(--text-primary);
+      border-color: rgba(196, 93, 62, 0.3);
+    }
+
+    .contact-links .link-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .contact-links .link-value {
+      display: block;
+      margin-top: 0.2rem;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      padding: 3rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    footer .footer-note {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* --- ANIMATIONS --- */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 900px) {
+      .about-grid,
+      .contact-content,
+      .project-card {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .project-card { padding: 2rem; }
+      .project-visual { order: -1; }
+    }
+
+    @media (max-width: 640px) {
+      section { padding: 4rem 0; }
+      .container { padding: 0 1.25rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        flex-direction: column;
+        background: rgba(12, 12, 14, 0.95);
+        backdrop-filter: blur(20px);
+        padding: 1.5rem 2rem;
+        gap: 1.25rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: block; }
+
+      .hero-cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      footer .container {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container">
+      <div class="nav-mark"><span>JF</span> / engineer</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-label">Operations Research · Optimisation · Data</div>
+        <h1>
+          Josh Fong
+          <span class="thin">Engineering Scientist building optimisation<br>and data systems for New Zealand's grid</span>
+        </h1>
+        <p class="hero-text">
+          I work at the intersection of operations research, software engineering,
+          and energy systems — designing tools that turn complex scheduling and planning
+          problems into automated, data-driven decisions.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn-primary">View Projects ↓</a>
+          <a href="#contact" class="btn-secondary">Get in Touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">01 / About</div>
+        <h2 class="section-title">Turning complex constraints<br>into working systems</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            I'm an Operations Planning Engineer at <strong>Transpower New Zealand</strong>,
+            the state-owned enterprise that owns and operates the national electricity
+            transmission grid. I sit in the Outage Planning team, where I build the
+            software, analytics, and optimisation systems behind how grid maintenance
+            gets scheduled and assessed.
+          </p>
+          <p>
+            I hold a <strong>BE(Hons) First Class in Engineering Science</strong> from the
+            University of Auckland, specialising in operations research — algorithmic
+            optimisation, simulation, and data science. I was hired off Transpower's
+            graduate programme a year ahead of schedule.
+          </p>
+          <p>
+            Outside of grid work, I'm interested in how optimisation and data tooling
+            can be applied more broadly — from scheduling and logistics to analytics
+            infrastructure and decision support. Based in Wellington, relocating to Auckland.
+          </p>
+        </div>
+        <div class="about-stats reveal">
+          <div class="stat-card">
+            <div class="stat-number">3+</div>
+            <div class="stat-label">Years at Transpower</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">1st</div>
+            <div class="stat-label">Class Honours, BE</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">OR</div>
+            <div class="stat-label">Operations Research</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">NZ</div>
+            <div class="stat-label">National Grid Scale</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">02 / Skills</div>
+        <h2 class="section-title">Core competencies</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card reveal">
+          <span class="skill-icon">⬡</span>
+          <h3>Optimisation & OR</h3>
+          <p>Constraint programming, mixed-integer programming, and scheduling applied to real infrastructure problems at national scale.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">CP-SAT</span>
+            <span class="skill-tag">OR-Tools</span>
+            <span class="skill-tag">SciPy</span>
+            <span class="skill-tag">NumPy</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <span class="skill-icon">△</span>
+          <h3>Python & Software</h3>
+          <p>Production Python for data pipelines, automation, internal tooling, and API integrations in enterprise environments.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">pandas</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">API Design</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <span class="skill-icon">◇</span>
+          <h3>Data & BI</h3>
+          <p>End-to-end analytics — from SQL pipelines and warehousing through to dashboards and executive reporting.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Snowflake</span>
+            <span class="skill-tag">Power BI</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">matplotlib</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <span class="skill-icon">○</span>
+          <h3>Energy Systems</h3>
+          <p>Domain expertise in grid operations, outage coordination, power flow analysis, and transmission asset management.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Grid Ops</span>
+            <span class="skill-tag">Power Flow</span>
+            <span class="skill-tag">Outage Planning</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <span class="skill-icon">□</span>
+          <h3>ML & Computer Vision</h3>
+          <p>Applied machine learning experience including real-time object detection and data augmentation for challenging environments.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">YOLO</span>
+            <span class="skill-tag">scikit-learn</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <span class="skill-icon">▽</span>
+          <h3>Communication</h3>
+          <p>Bridging technical and business teams — training programmes, stakeholder reporting, process consulting, and mentoring.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Stakeholders</span>
+            <span class="skill-tag">Training</span>
+            <span class="skill-tag">Documentation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">03 / Projects</div>
+        <h2 class="section-title">Selected work</h2>
+      </div>
+
+      <!-- Project 1: CP-SAT Scheduler -->
+      <div class="project-card reveal">
+        <div class="project-info">
+          <div class="project-number">PROJECT 01</div>
+          <h3>National Grid Outage Scheduler</h3>
+          <p>
+            A constraint-programming solver that generates the Annual Outage Plan for
+            New Zealand's electricity transmission grid. Automates what was previously
+            a multi-month manual planning process, optimising across hundreds of outages
+            with complex interdependencies and operational constraints.
+          </p>
+          <ul class="project-detail-list">
+            <li>Reduced planning turnaround from four months to one</li>
+            <li>Improved schedule efficiency by 25% with zero conflicts</li>
+            <li>Models dependencies, seasonal windows, and crew availability</li>
+            <li>In production use for national grid planning</li>
+          </ul>
+          <div class="project-tech">
+            <span>Python</span>
+            <span>CP-SAT</span>
+            <span>OR-Tools</span>
+            <span>pandas</span>
+          </div>
+        </div>
+        <div class="project-visual">
+          <div class="project-visual-inner" id="scheduleViz"></div>
+        </div>
+      </div>
+
+      <!-- Project 2: BI Reporting -->
+      <div class="project-card reveal">
+        <div class="project-info">
+          <div class="project-number">PROJECT 02</div>
+          <h3>Outage Planning Analytics</h3>
+          <p>
+            Established the team's first business intelligence framework — from data
+            warehousing through to automated dashboards used by executives, leaders,
+            and governance. Built Python automation that reduced weekly manual engineering
+            effort by 30%.
+          </p>
+          <ul class="project-detail-list">
+            <li>Built the team's BI pipeline from scratch</li>
+            <li>Snowflake warehouse with Power BI dashboards</li>
+            <li>Python automation for assessment workflows</li>
+            <li>Created training programmes and technical standards</li>
+          </ul>
+          <div class="project-tech">
+            <span>Snowflake</span>
+            <span>Power BI</span>
+            <span>Python</span>
+            <span>SQL</span>
+          </div>
+        </div>
+        <div class="project-visual">
+          <div class="project-visual-inner" id="dataflowViz"></div>
+        </div>
+      </div>
+
+      <!-- Project 3: Maritime AI -->
+      <div class="project-card reveal">
+        <div class="project-info">
+          <div class="project-number">PROJECT 03</div>
+          <h3>Underwater Object Detection</h3>
+          <p>
+            Engineering capstone — a real-time YOLO-based detection system for
+            underwater drone swarms, identifying shellfish in visually challenging marine
+            environments. Improved detection performance through targeted data
+            augmentation simulating real underwater conditions.
+          </p>
+          <ul class="project-detail-list">
+            <li>Real-time inference on underwater video feeds</li>
+            <li>+15% mAP under low-visibility conditions</li>
+            <li>Custom augmentation pipeline for marine environments</li>
+          </ul>
+          <div class="project-tech">
+            <span>PyTorch</span>
+            <span>YOLO</span>
+            <span>Python</span>
+            <span>Computer Vision</span>
+          </div>
+        </div>
+        <div class="project-visual">
+          <div class="project-visual-inner" id="maritimeViz"></div>
+        </div>
+      </div>
+
+      <!-- Project 4: Maritime Monitoring -->
+      <div class="project-card reveal">
+        <div class="project-info">
+          <div class="project-number">PROJECT 04</div>
+          <h3>Maritime Monitoring System</h3>
+          <p>
+            Personal project exploring observability tooling — Prometheus and Grafana
+            with simulated maritime data for dashboards, alerting, and time-series
+            visualisation.
+          </p>
+          <ul class="project-detail-list">
+            <li>Prometheus metrics collection and alerting</li>
+            <li>Grafana dashboards for simulated vessel data</li>
+            <li>Available on GitHub</li>
+          </ul>
+          <div class="project-tech">
+            <span>Prometheus</span>
+            <span>Grafana</span>
+            <span>Docker</span>
+          </div>
+        </div>
+        <div class="project-visual">
+          <div class="project-visual-inner" id="stackViz"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">04 / Contact</div>
+        <h2 class="section-title">Let's connect</h2>
+      </div>
+      <div class="contact-content">
+        <div class="contact-text reveal">
+          <p>
+            I'm always up for conversations about optimisation, energy systems, data,
+            or interesting engineering problems. Based in New Zealand, relocating to
+            Auckland.
+          </p>
+        </div>
+        <ul class="contact-links reveal">
+          <li>
+            <a href="mailto:yuanli.fong@gmail.com">
+              <div>
+                <span class="link-label">Email</span>
+                <span class="link-value">yuanli.fong@gmail.com</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://linkedin.com/in/joshfong" target="_blank" rel="noopener">
+              <div>
+                <span class="link-label">LinkedIn</span>
+                <span class="link-value">linkedin.com/in/joshfong</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/foshuajong" target="_blank" rel="noopener">
+              <div>
+                <span class="link-label">GitHub</span>
+                <span class="link-value">github.com/foshuajong</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Josh Fong</p>
+      <span class="footer-note">joshua.fong.nz</span>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // Schedule Gantt visualization
+    function buildScheduleViz() {
+      const container = document.getElementById('scheduleViz');
+      if (!container) return;
+      const viz = document.createElement('div');
+      viz.className = 'schedule-viz';
+      const colors = ['#C45D3E', '#D4694C', '#8B5E3C', '#6B8F71', '#4A7B9D', '#9B7653'];
+      const labels = ['HV', 'TX', 'CB', 'LN', 'PT', 'IS', 'GN', 'BK'];
+      for (let r = 0; r < 8; r++) {
+        const row = document.createElement('div');
+        row.className = 'schedule-row';
+        const label = document.createElement('span');
+        label.className = 'schedule-row-label';
+        label.textContent = labels[r];
+        row.appendChild(label);
+        let pos = 0;
+        while (pos < 100) {
+          const gap = 2 + Math.random() * 8;
+          pos += gap;
+          const width = 5 + Math.random() * 20;
+          if (pos + width > 100) break;
+          const bar = document.createElement('div');
+          bar.className = 'schedule-bar';
+          bar.style.width = width + '%';
+          bar.style.marginLeft = gap + '%';
+          bar.style.background = colors[Math.floor(Math.random() * colors.length)];
+          bar.style.opacity = (0.4 + Math.random() * 0.6).toFixed(2);
+          bar.style.animationDelay = (r * 0.08 + Math.random() * 0.3).toFixed(2) + 's';
+          row.appendChild(bar);
+          pos += width;
+        }
+        viz.appendChild(row);
+      }
+      container.appendChild(viz);
+    }
+
+    // Dataflow visualization
+    function buildDataflowViz() {
+      const container = document.getElementById('dataflowViz');
+      if (!container) return;
+      const viz = document.createElement('div');
+      viz.className = 'dataflow-viz';
+      const nodes = [
+        { text: 'Snowflake', active: false },
+        { text: '↓', arrow: true },
+        { text: 'Python ETL', active: true },
+        { text: '↓', arrow: true },
+        { text: 'Power BI', active: true },
+        { text: '↓', arrow: true },
+        { text: 'Dashboards', active: false }
+      ];
+      nodes.forEach((n, i) => {
+        const el = document.createElement('div');
+        if (n.arrow) {
+          el.className = 'dataflow-arrow';
+          el.textContent = n.text;
+        } else {
+          el.className = 'dataflow-node' + (n.active ? ' active' : '');
+          el.textContent = n.text;
+        }
+        el.style.animationDelay = (i * 0.12) + 's';
+        viz.appendChild(el);
+      });
+      container.appendChild(viz);
+    }
+
+    // Maritime detection grid
+    function buildMaritimeViz() {
+      const container = document.getElementById('maritimeViz');
+      if (!container) return;
+      const viz = document.createElement('div');
+      viz.className = 'maritime-viz';
+      const grid = document.createElement('div');
+      grid.className = 'maritime-grid';
+      const detected = [5, 9, 14, 18, 21];
+      for (let i = 0; i < 24; i++) {
+        const cell = document.createElement('div');
+        cell.className = 'maritime-cell' + (detected.includes(i) ? ' detected' : '');
+        cell.style.animationDelay = (i * 0.04) + 's';
+        if (detected.includes(i)) {
+          const label = document.createElement('span');
+          label.className = 'cell-label';
+          label.textContent = (Math.random() * 0.4 + 0.6).toFixed(2);
+          cell.appendChild(label);
+        }
+        grid.appendChild(cell);
+      }
+      viz.appendChild(grid);
+      container.appendChild(viz);
+    }
+
+    // Stack visualization
+    function buildStackViz() {
+      const container = document.getElementById('stackViz');
+      if (!container) return;
+      const viz = document.createElement('div');
+      viz.className = 'stack-viz';
+      const stack = [
+        { label: 'prometheus:9090', color: '#C45D3E' },
+        { label: 'grafana:3000', color: '#6B8F71' },
+        { label: 'vessel-sim:8080', color: '#4A7B9D' }
+      ];
+      stack.forEach((s, i) => {
+        if (i > 0) {
+          const line = document.createElement('div');
+          line.className = 'stack-line';
+          line.style.animationDelay = (i * 0.2 - 0.1) + 's';
+          viz.appendChild(line);
+        }
+        const node = document.createElement('div');
+        node.className = 'stack-node';
+        node.style.animationDelay = (i * 0.2) + 's';
+        const dot = document.createElement('span');
+        dot.className = 'stack-dot';
+        dot.style.background = s.color;
+        const text = document.createElement('span');
+        text.textContent = s.label;
+        node.appendChild(dot);
+        node.appendChild(text);
+        viz.appendChild(node);
+      });
+      container.appendChild(viz);
+    }
+
+    buildScheduleViz();
+    buildDataflowViz();
+    buildMaritimeViz();
+    buildStackViz();
+  </script>
+
+</body>
+</html>
