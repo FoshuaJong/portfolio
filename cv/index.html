@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joshua Fong — CV</title>
+  <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:            #0C0C0E;
+      --bg-card:       #1A1A20;
+      --text-primary:  #E8E6E3;
+      --text-secondary:#9B9A97;
+      --text-muted:    #5C5B59;
+      --accent:        #C45D3E;
+      --border:        rgba(255, 255, 255, 0.06);
+      --font-body:     'Outfit', system-ui, sans-serif;
+      --font-mono:     'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      overflow: hidden;
+    }
+
+    object {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .fallback {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      gap: 1.5rem;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .fallback .label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .fallback p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .fallback a {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      background: var(--accent);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .fallback a:hover {
+      background: #d4694c;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 30px rgba(196, 93, 62, 0.25);
+    }
+  </style>
+</head>
+<body>
+  <object data="cv.pdf" type="application/pdf">
+    <div class="fallback">
+      <span class="label">CV / Résumé</span>
+      <p>Your browser doesn't support inline PDFs.</p>
+      <a href="cv.pdf" download>Download CV</a>
+    </div>
+  </object>
+</body>
+</html>
