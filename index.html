@@ -92,7 +92,7 @@
       letter-spacing: 0.05em;
     }
 
-    .nav-mark span { color: var(--accent); }
+    .nav-mark a { color: var(--accent) !important;}
 
     .nav-links {
       display: flex;
@@ -100,7 +100,7 @@
       list-style: none;
     }
 
-    .nav-links a {
+    .nav-links a, .nav-mark a {
       font-size: 0.8rem;
       font-weight: 400;
       color: var(--text-muted);
@@ -782,13 +782,13 @@
   </style>
 </head>
 
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 <body>
 
   <!-- NAV -->
   <nav>
     <div class="container">
-      <div class="nav-mark"><span>JF</span> / engineer</div>
+      <div class="nav-mark"><span><a href="#">JF</a></span> / engineer</div>
       <ul class="nav-links" id="navLinks">
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
@@ -808,7 +808,7 @@
       <div class="hero-content">
         <div class="hero-label">Operations Research · Optimisation · Data</div>
         <h1>
-          Joshy Fong
+          Josh Fong
           <span class="thin">Engineering Scientist building optimisation<br>and data systems for New Zealand's grid</span>
         </h1>
         <p class="hero-text">
