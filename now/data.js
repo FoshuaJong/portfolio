@@ -48,7 +48,7 @@ const NOW_DATA = {
       items: [
         {
           title: 'Wellington → Auckland',
-          desc: 'Migrating back to my home city to be closer to family and friends.'
+          desc: 'Returning to my home city to be closer to family and friends.'
         },
         {
           title: 'Hair colour',
