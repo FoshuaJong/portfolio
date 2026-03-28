@@ -10,7 +10,7 @@ const NOW_DATA = {
       items: [
         {
           title: 'apps.fong.nz',
-          desc: 'I\'m getting back into programming the best way I know how - with a fun little projects.',
+          desc: 'I\'m getting back into programming the best way I know how - with fun little projects.',
           link: 'https://apps.fong.nz'
         },
         {
