@@ -12,7 +12,7 @@ const WORK_DATA = {
         'Planning cycle compressed from 4 months to 1',
         '25% improvement in schedule quality vs. manual baseline',
         'Deployed into production planning workflows at Transpower',
-        'Full-year horizon (~800 outage events) solved in a single run'
+        'Full-year horizon solved in a single run'
       ],
       tech: ['CP-SAT', 'OR-Tools', 'Python', 'NumPy', 'pandas'],
       github: 'https://github.com/FoshuaJong/maintenance-window-scheduler'
