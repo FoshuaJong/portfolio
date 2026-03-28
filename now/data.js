@@ -11,7 +11,7 @@ const NOW_DATA = {
         {
           title: 'apps.fong.nz',
           desc: 'I\'m getting back into programming the best way I know how - with a fun little projects.',
-          link: 'https:\\apps.fong.nz'
+          link: 'https://apps.fong.nz'
         },
         {
           title: 'Portfolio, email, and documentation',
