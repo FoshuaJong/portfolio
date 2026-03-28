@@ -5,28 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Joshua Fong — CV</title>
   <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg:            #0C0C0E;
-      --bg-card:       #1A1A20;
-      --text-primary:  #E8E6E3;
-      --text-secondary:#9B9A97;
-      --text-muted:    #5C5B59;
-      --accent:        #C45D3E;
-      --border:        rgba(255, 255, 255, 0.06);
-      --font-body:     'Outfit', system-ui, sans-serif;
-      --font-mono:     'JetBrains Mono', monospace;
-    }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html, body {
       height: 100%;
-      background: var(--bg);
-      color: var(--text-primary);
-      font-family: var(--font-body);
-      font-weight: 300;
+      background: #0C0C0E;
+      color: #E8E6E3;
       -webkit-font-smoothing: antialiased;
       overflow: hidden;
     }
@@ -46,18 +31,19 @@
       gap: 1.5rem;
       padding: 2rem;
       text-align: center;
+      font-family: system-ui, sans-serif;
     }
 
     .fallback .label {
-      font-family: var(--font-mono);
+      font-family: monospace;
       font-size: 0.7rem;
-      color: var(--accent);
+      color: #C45D3E;
       letter-spacing: 0.2em;
       text-transform: uppercase;
     }
 
     .fallback p {
-      color: var(--text-secondary);
+      color: #9B9A97;
       font-size: 1rem;
       line-height: 1.7;
     }
@@ -65,9 +51,8 @@
     .fallback a {
       display: inline-block;
       padding: 0.85rem 2rem;
-      background: var(--accent);
-      color: var(--text-primary);
-      font-family: var(--font-body);
+      background: #C45D3E;
+      color: #E8E6E3;
       font-size: 0.85rem;
       font-weight: 500;
       letter-spacing: 0.03em;

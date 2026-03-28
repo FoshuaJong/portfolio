@@ -1,0 +1,14 @@
+:root {
+  --bg: #0C0C0E;
+  --bg-elevated: #141418;
+  --bg-card: #1A1A20;
+  --text-primary: #E8E6E3;
+  --text-secondary: #9B9A97;
+  --text-muted: #5C5B59;
+  --accent: #C45D3E;
+  --accent-glow: rgba(196, 93, 62, 0.15);
+  --border: rgba(255,255,255,0.06);
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: 'Outfit', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
