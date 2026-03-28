@@ -172,6 +172,30 @@
       gap: 0.75rem;
     }
 
+    /* Forward link to /now */
+    .work-forward {
+      border-top: 1px solid var(--border);
+      padding-top: 3rem;
+      margin-top: 1rem;
+    }
+
+    .case-forward {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      text-decoration: none;
+      transition: gap 0.2s ease;
+    }
+
+    .case-forward:hover {
+      gap: 0.75rem;
+    }
+
     /* --- TECH TAGS --- */
     .case-tech {
       display: flex;
@@ -213,10 +237,8 @@
     <div class="container">
       <div class="nav-mark"><span><a href="../">JF</a></span> / engineer</div>
       <ul class="nav-links" id="navLinks">
-        <li><a href="/#about">About</a></li>
-        <li><a href="/#skills">Skills</a></li>
-        <li><a href="/#projects">Projects</a></li>
-        <li><a href="/#contact">Contact</a></li>
+        <li><a href="/">Home</a></li>
+        <li class="nav-sep"></li>
         <li><a href="#" aria-current="page">Work</a></li>
         <li><a href="/now/">Now</a></li>
       </ul>
@@ -238,6 +260,9 @@
   <section class="work-list">
     <div class="container">
       <div class="work-cases"></div>
+      <div class="work-forward reveal">
+        <a href="/now/" class="case-forward">What I'm working on now →</a>
+      </div>
     </div>
   </section>
 

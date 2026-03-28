@@ -367,6 +367,7 @@
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li class="nav-sep"></li>
         <li><a href="work/">Work</a></li>
         <li><a href="now/">Now</a></li>
       </ul>
@@ -849,6 +850,37 @@
     buildDataflowViz();
     buildMaritimeViz();
     buildStackViz();
+
+    // Nav scroll tracking
+    (function () {
+      const sections = ['about', 'skills', 'projects', 'contact'];
+      const navAnchors = {};
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        const href = a.getAttribute('href');
+        if (href && href.startsWith('#') && href.length > 1) {
+          navAnchors[href.slice(1)] = a;
+        }
+      });
+
+      function clearActive() {
+        Object.values(navAnchors).forEach(a => a.classList.remove('nav-active'));
+      }
+
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const id = entry.target.id;
+          if (entry.isIntersecting) {
+            clearActive();
+            if (navAnchors[id]) navAnchors[id].classList.add('nav-active');
+          }
+        });
+      }, { threshold: 0.3, rootMargin: '-80px 0px -40% 0px' });
+
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) sectionObserver.observe(el);
+      });
+    })();
   </script>
 
 </body>

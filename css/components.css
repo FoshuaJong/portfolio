@@ -43,7 +43,36 @@ nav .container {
   transition: color 0.25s ease;
 }
 
+.nav-links a {
+  position: relative;
+}
+
 .nav-links a:hover { color: var(--text-primary); }
+
+/* Active nav indicator */
+.nav-links a[aria-current="page"],
+.nav-links a.nav-active {
+  color: var(--text-primary);
+}
+
+.nav-links a[aria-current="page"]::after,
+.nav-links a.nav-active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+}
+
+/* Nav separator */
+.nav-sep {
+  width: 1px;
+  height: 1rem;
+  background: var(--border);
+  align-self: center;
+}
 
 .nav-toggle {
   display: none;
@@ -396,6 +425,7 @@ footer .footer-note {
 
   .nav-links.open { display: flex; }
   .nav-toggle { display: block; }
+  .nav-sep { display: none; }
 
   footer .container {
     flex-direction: column;
