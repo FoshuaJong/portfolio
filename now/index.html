@@ -71,6 +71,16 @@
       border-color: var(--accent-border-hover);
     }
 
+    .now-item-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .now-item-link .now-item {
+      cursor: pointer;
+    }
+
     .now-item-title {
       font-family: var(--font-body);
       font-size: 1rem;
@@ -160,12 +170,18 @@
         <div class="now-block reveal">
           <p class="section-label">${section.label}</p>
           <div class="now-items">
-            ${section.items.map(item => `
-              <div class="now-item">
-                <h3 class="now-item-title">${item.title}</h3>
-                <p class="now-item-desc">${item.desc}</p>
-              </div>
-            `).join('')}
+            ${section.items.map(item => item.link
+              ? `<a href="${item.link}" class="now-item-link" target="_blank" rel="noopener noreferrer">
+                  <div class="now-item">
+                    <h3 class="now-item-title">${item.title}</h3>
+                    <p class="now-item-desc">${item.desc}</p>
+                  </div>
+                </a>`
+              : `<div class="now-item">
+                  <h3 class="now-item-title">${item.title}</h3>
+                  <p class="now-item-desc">${item.desc}</p>
+                </div>`
+            ).join('')}
           </div>
         </div>
       `).join('');

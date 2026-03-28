@@ -1,5 +1,6 @@
 // now/data.js
 // Edit this file to update the /now page. No other file needs to change.
+// Each item can optionally include `link: 'https://...'` to make the card clickable.
 
 const NOW_DATA = {
   updated: 'March 28, 2026',
@@ -8,8 +9,9 @@ const NOW_DATA = {
       label: 'Currently working on',
       items: [
         {
-          title: 'fong.nz',
-          desc: 'I\'m getting back into programming the best way I know how - with a fun little project.'
+          title: 'apps.fong.nz',
+          desc: 'I\'m getting back into programming the best way I know how - with a fun little projects.',
+          link: 'https:\\apps.fong.nz'
         },
         {
           title: 'Portfolio, email, and documentation',
