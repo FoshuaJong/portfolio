@@ -31,8 +31,12 @@ const NOW_DATA = {
       ]
     },
     {
-      label: 'Reading / watching',
+      label: 'Reading / watching / gaming',
       items: [
+        {
+          title: 'Slay the Spire 2',
+          desc: 'A deckbuilding roguelike where mastery just reveals deeper layers of complexity. Chasing the highest difficulty on all characters.'
+        },
         {
           title: 'Invincible',
           desc: 'A superhero show with uncomfortably human drama, exploring the visceral implications of beings with immense power in the real world.'
