@@ -2,7 +2,7 @@
 // Edit this file to update the /now page. No other file needs to change.
 
 const NOW_DATA = {
-  updated: 'March 2026',
+  updated: 'March 28, 2026',
   sections: [
     {
       label: 'Currently working on',
@@ -43,7 +43,7 @@ const NOW_DATA = {
         },
         {
           title: 'The Book Thief',
-          desc: 'Narrated by Death, a young girl in Nazi Germany finds solace, resistance, and found family by stealilng books during the horrors of WWII'
+          desc: 'Narrated by Death, a young girl in Nazi Germany finds solace, resistance, and found family by stealing books during the horrors of WWII'
         }
       ]
     },
