@@ -29,7 +29,7 @@ const NOW_DATA = {
         {
           title: 'Claude code',
           desc: 'Agentic engineering as a force-multiplier and creative outlet.',
-          link: 'https://claude.com/product/claude-code'
+          link: 'https://claude.ai/code'
         },
       ]
     },
