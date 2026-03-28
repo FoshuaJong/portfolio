@@ -3,7 +3,7 @@
 // Each item can optionally include `link: 'https://...'` to make the card clickable.
 
 const NOW_DATA = {
-  updated: 'March 28, 2026',
+  updated: 'March 29, 2026',
   sections: [
     {
       label: 'Currently working on',
