@@ -862,24 +862,26 @@
         }
       });
 
-      function clearActive() {
+      function setActive(id) {
         Object.values(navAnchors).forEach(a => a.classList.remove('nav-active'));
+        if (id && navAnchors[id]) navAnchors[id].classList.add('nav-active');
       }
 
-      const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          const id = entry.target.id;
-          if (entry.isIntersecting) {
-            clearActive();
-            if (navAnchors[id]) navAnchors[id].classList.add('nav-active');
-          }
-        });
-      }, { threshold: 0.3, rootMargin: '-80px 0px -40% 0px' });
+      function update() {
+        const offset = 100;
+        const atBottom = window.scrollY + window.innerHeight >= document.body.scrollHeight - 20;
+        if (atBottom) { setActive(sections[sections.length - 1]); return; }
+        const scrollY = window.scrollY + offset;
+        let current = null;
+        for (const id of sections) {
+          const el = document.getElementById(id);
+          if (el && el.offsetTop <= scrollY) current = id;
+        }
+        setActive(current);
+      }
 
-      sections.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) sectionObserver.observe(el);
-      });
+      window.addEventListener('scroll', update, { passive: true });
+      update();
     })();
   </script>
 
