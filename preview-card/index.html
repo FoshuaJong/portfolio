@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1200">
+  <title>Preview Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      background: #0C0C0E;
+      font-family: 'Outfit', system-ui, sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Grid overlay */
+    .grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 72px 96px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: #3DA899;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-weight: 400;
+      font-size: 72px;
+      color: #E8E6E3;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .subtitle {
+      font-family: 'Outfit', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 28px;
+      color: #9B9A97;
+      line-height: 1.35;
+      margin-bottom: 48px;
+      max-width: 900px;
+    }
+
+    .subtitle strong {
+      color: #E8E6E3;
+      font-weight: 400;
+    }
+
+    .meta {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .domain {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #5C5B59;
+      letter-spacing: 0.05em;
+    }
+
+    .divider {
+      width: 1px;
+      height: 16px;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .tags {
+      display: flex;
+      gap: 12px;
+    }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #3DA899;
+      background: rgba(61, 168, 153, 0.08);
+      padding: 5px 10px;
+    }
+
+    /* Accent line */
+    .accent-line {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: #3DA899;
+    }
+  </style>
+</head>
+<body>
+  <div class="accent-line"></div>
+  <div class="grid"></div>
+  <div class="content">
+    <div class="label">joshua.fong.nz</div>
+    <h1>Josh Fong</h1>
+    <div class="subtitle">
+      <strong>Engineering Scientist — Operations Research</strong>
+    </div>
+    <div class="meta">
+      <span class="domain">joshua.fong.nz</span>
+      <div class="divider"></div>
+      <div class="tags">
+        <span class="tag">Optimisation</span>
+        <span class="tag">Data</span>
+        <span class="tag">Energy</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
