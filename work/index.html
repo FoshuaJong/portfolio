@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joshua Fong — Work</title>
+  <meta name="description" content="Case studies on constraint optimisation and data engineering projects by Joshua Fong.">
+  <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+
+  <style>
+    /* --- PAGE HEADER --- */
+    .work-header {
+      padding: 8rem 0 3rem;
+    }
+
+    .work-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      color: var(--text-primary);
+      font-weight: 400;
+      margin: 0.5rem 0 0;
+      line-height: 1.1;
+    }
+
+    /* --- WORK LIST --- */
+    .work-list {
+      padding: 2rem 0 8rem;
+    }
+
+    .work-case {
+      border-top: 1px solid var(--border);
+      padding: 4rem 0;
+    }
+
+    /* --- CASE HEADER --- */
+    .case-number {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .case-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 400;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      line-height: 1.15;
+    }
+
+    .case-meta {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    /* --- CASE SUMMARY --- */
+    .case-summary {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--text-primary);
+      font-style: italic;
+      line-height: 1.65;
+      border-left: 2px solid var(--accent);
+      padding-left: 1.25rem;
+      margin-bottom: 2.5rem;
+      max-width: 640px;
+    }
+
+    /* --- CASE BODY --- */
+    .case-body {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      column-gap: 3rem;
+      row-gap: 2rem;
+      margin-bottom: 2.5rem;
+      max-width: 720px;
+    }
+
+    .case-section-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      padding-top: 0.2rem;
+    }
+
+    .case-section-content p {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .case-section-content ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .case-section-content li {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+    }
+
+    .case-section-content li::before {
+      content: '→';
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    /* --- EXTERNAL LINK --- */
+    .case-github {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      text-decoration: none;
+      transition: gap 0.2s ease;
+    }
+
+    .case-github:hover {
+      gap: 0.75rem;
+    }
+
+    .case-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s ease, gap 0.2s ease;
+    }
+
+    .case-back:hover {
+      color: var(--text-secondary);
+      gap: 0.75rem;
+    }
+
+    /* --- TECH TAGS --- */
+    .case-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 900px) {
+      .case-body {
+        grid-template-columns: 1fr;
+        row-gap: 1rem;
+      }
+
+      .case-section-label:not(:first-child) {
+        margin-top: 1rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .work-header {
+        padding: 6rem 0 2rem;
+      }
+
+      .work-case {
+        padding: 2.5rem 0;
+      }
+
+      .case-summary {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container">
+      <div class="nav-mark"><span><a href="../">JF</a></span> / engineer</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#skills">Skills</a></li>
+        <li><a href="/#projects">Projects</a></li>
+        <li><a href="/#contact">Contact</a></li>
+        <li><a href="#" aria-current="page">Work</a></li>
+        <li><a href="/now/">Now</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="work-header">
+    <div class="container">
+      <p class="section-label">Case Studies</p>
+      <h1>The work, in depth</h1>
+    </div>
+  </section>
+
+  <!-- WORK LIST -->
+  <section class="work-list">
+    <div class="container">
+      <div class="work-cases"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Joshua Fong</p>
+      <span class="footer-note">joshua.fong.nz</span>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script>
+    // Mobile nav
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // Render case studies from data.js
+    (function () {
+      const container = document.querySelector('.work-cases');
+      container.innerHTML = WORK_DATA.cases.map(c => `
+        <div class="work-case reveal" id="case-${c.number}">
+          <p class="case-number">${c.number}</p>
+          <h2 class="case-title">${c.title}</h2>
+          <p class="case-meta">${c.tag} · ${c.year}</p>
+          <p class="case-summary">${c.summary}</p>
+          ${c.github ? `<a href="${c.github}" class="case-github" target="_blank" rel="noopener">Code & demo ↗</a>` : ''}
+          <div class="case-body">
+            <p class="case-section-label">Problem</p>
+            <div class="case-section-content"><p>${c.problem}</p></div>
+            <p class="case-section-label">Approach</p>
+            <div class="case-section-content"><p>${c.approach}</p></div>
+            <p class="case-section-label">Outcomes</p>
+            <div class="case-section-content">
+              <ul>${c.outcomes.map(o => `<li>${o}</li>`).join('')}</ul>
+            </div>
+          </div>
+          <div class="case-tech">
+            ${c.tech.map(t => `<span class="tag">${t}</span>`).join('')}
+          </div>
+          <a href="/#projects" class="case-back">← Selected work</a>
+        </div>
+      `).join('');
+
+      // Scroll reveal — must run after content is injected
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    })();
+  </script>
+
+</body>
+</html>
