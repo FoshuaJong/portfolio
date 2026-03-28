@@ -21,6 +21,19 @@ body {
   color: var(--text-primary);
 }
 
+#grid-spotlight {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  -webkit-mask-image: radial-gradient(circle 200px at var(--mx, -999px) var(--my, -999px), black 0%, transparent 100%);
+  mask-image: radial-gradient(circle 200px at var(--mx, -999px) var(--my, -999px), black 0%, transparent 100%);
+}
+
 body::before {
   content: '';
   position: fixed;
