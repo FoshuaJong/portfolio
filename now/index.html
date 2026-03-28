@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joshua Fong — Now</title>
+  <meta name="description" content="What Joshua Fong is currently working on, learning, and thinking about.">
+  <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+
+  <style>
+    /* --- PAGE HEADER --- */
+    .now-header {
+      padding: 8rem 0 3rem;
+    }
+
+    .now-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      color: var(--text-primary);
+      font-weight: 400;
+      margin: 0.5rem 0 1rem;
+      line-height: 1.1;
+    }
+
+    .now-updated {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* --- CONTENT --- */
+    .now-content {
+      padding: 2rem 0 6rem;
+    }
+
+    .now-blocks {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+      max-width: 720px;
+    }
+
+    .now-block .section-label {
+      margin-bottom: 1.5rem;
+    }
+
+    .now-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .now-item {
+      padding: 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      transition: border-color 0.3s ease;
+    }
+
+    .now-item:hover {
+      border-color: rgba(196, 93, 62, 0.25);
+    }
+
+    .now-item-title {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+
+    .now-item-desc {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 640px) {
+      .now-header {
+        padding: 6rem 0 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container">
+      <div class="nav-mark"><span><a href="../">JF</a></span> / engineer</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#skills">Skills</a></li>
+        <li><a href="/#projects">Projects</a></li>
+        <li><a href="/#contact">Contact</a></li>
+        <li><a href="#" aria-current="page">Now</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="now-header">
+    <div class="container">
+      <p class="section-label">Now</p>
+      <h1>What I'm up to</h1>
+      <p class="now-updated">Last updated <time datetime="2026-03">March 2026</time></p>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="now-content">
+    <div class="container">
+      <div class="now-blocks"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Joshua Fong</p>
+      <span class="footer-note">joshua.fong.nz</span>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script>
+    // Mobile nav
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // Render content from data.js
+    (function () {
+      document.querySelector('time').textContent = NOW_DATA.updated;
+
+      const container = document.querySelector('.now-blocks');
+      container.innerHTML = NOW_DATA.sections.map(section => `
+        <div class="now-block reveal">
+          <p class="section-label">${section.label}</p>
+          <div class="now-items">
+            ${section.items.map(item => `
+              <div class="now-item">
+                <h3 class="now-item-title">${item.title}</h3>
+                <p class="now-item-desc">${item.desc}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+
+      // Scroll reveal — must run after content is injected
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    })();
+  </script>
+
+</body>
+</html>
