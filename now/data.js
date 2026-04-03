@@ -3,7 +3,7 @@
 // Each item can optionally include `link: 'https://...'` to make the card clickable.
 
 const NOW_DATA = {
-  updated: 'March 29, 2026',
+  updated: 'April 4, 2026',
   sections: [
     {
       label: 'Currently working on',
@@ -13,10 +13,6 @@ const NOW_DATA = {
           desc: 'I\'m getting back into programming the best way I know how - with fun little projects.',
           link: 'https://apps.fong.nz'
         },
-        {
-          title: 'Portfolio, email, and documentation',
-          desc: 'Keeping it focused and practical.'
-        }
       ]
     },
     {
@@ -47,9 +43,9 @@ const NOW_DATA = {
           link: 'https://www.amazon.com/INVINCIBLE-SEASON-4/dp/B0GD85SCS4'
         },
         {
-          title: 'The Book Thief',
-          desc: 'Narrated by Death, a young girl in Nazi Germany finds solace, resistance, and found family by stealing books during the horrors of WWII',
-          link: 'https://www.goodreads.com/book/show/19063.The_Book_Thief'
+          title: 'Pretext',
+          desc: 'Cheng Lou, a former React Core team member and engineer at Midjourney says he "crawled through depths of hell" to bring us Pretext – a fast, accurate, and comprehensive text measurement library that could change UI design forever.',
+          link: 'https://github.com/chenglou/pretext'
         }
       ]
     },
