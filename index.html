@@ -391,12 +391,12 @@
         <div class="hero-label">Operations Research · Optimisation · Data</div>
         <h1>
           Josh Fong
-          <span class="thin">Engineering Scientist — Operations Research</span>
+          <span class="thin">Engineering Scientist -- Operations Research</span>
         </h1>
         <p class="hero-text">
-          I work at the intersection of operations research, software engineering,
-          and energy systems — building optimisation and scheduling systems at Transpower — the state-owned enterprise
-          that operates New Zealand's national electricity grid.
+          I build optimisation and scheduling systems for New Zealand's national electricity grid.
+          The problems are genuinely hard -- combinatorial, safety-critical, and politically loaded.
+          The tools are constraint solvers, Python, and a lot of patience with Excel files I did not create.
         </p>
         <div class="hero-cta">
           <a href="#projects" class="btn-primary">View Projects ↓</a>
@@ -411,27 +411,25 @@
     <div class="container">
       <div class="section-header reveal">
         <div class="section-label">01 / About</div>
-        <h2 class="section-title">Turning complex constraints<br>into working systems</h2>
+        <h2 class="section-title">Real constraints.<br>Production systems.</h2>
       </div>
       <div class="about-grid">
         <div class="about-text reveal">
           <p>
-            I'm an Operations Planning Engineer at <strong>Transpower New Zealand</strong>,
-            the state-owned enterprise that owns and operates the national electricity
-            transmission grid. I sit in the Outage Planning team, where I build the
-            software, analytics, and optimisation systems behind how grid maintenance
-            gets scheduled and assessed.
+            I'm an Operations Planning Engineer at <strong>Transpower New Zealand</strong> --
+            the state-owned enterprise that runs the national transmission grid.
+            My team decides when the grid goes offline for maintenance. Getting that
+            wrong has real consequences, so the scheduling constraints aren't academic.
           </p>
           <p>
-            I hold a <strong>BE(Hons) First Class in Engineering Science</strong> from the
-            University of Auckland, specialising in operations research — algorithmic
-            optimisation, simulation, and data science. I was hired off Transpower's
-            graduate programme a year ahead of schedule.
+            <strong>BE(Hons) First Class in Engineering Science</strong>, University of Auckland,
+            specialising in operations research. I joined Transpower's graduate programme and
+            moved into a permanent role a year ahead of the standard timeline.
           </p>
           <p>
-            Outside of grid work, I'm interested in how optimisation and data tooling
-            can be applied more broadly — from scheduling and logistics to analytics
-            infrastructure and decision support.
+            Most of my interesting problems turn out to be scheduling problems in disguise.
+            Outside the grid, I apply the same thinking to logistics, analytics infrastructure,
+            and anywhere decisions are being made in spreadsheets that shouldn't be.
           </p>
         </div>
         <div class="about-stats reveal">
@@ -461,13 +459,13 @@
     <div class="container">
       <div class="section-header reveal">
         <div class="section-label">02 / Skills</div>
-        <h2 class="section-title">Core competencies</h2>
+        <h2 class="section-title">What I actually do</h2>
       </div>
       <div class="skills-grid">
         <div class="skill-card reveal">
           <span class="skill-icon">⬡</span>
           <h3>Optimisation & OR</h3>
-          <p>Constraint programming, mixed-integer programming, and scheduling applied to real infrastructure problems at national scale.</p>
+          <p>CP-SAT and MIP for scheduling problems with hard physical constraints. Not research-grade -- production systems where a solver timeout is someone's planning cycle.</p>
           <div class="skill-tags">
             <span class="skill-tag">CP-SAT</span>
             <span class="skill-tag">OR-Tools</span>
@@ -478,7 +476,7 @@
         <div class="skill-card reveal">
           <span class="skill-icon">△</span>
           <h3>Python & Software</h3>
-          <p>Production Python for data pipelines, automation, internal tooling, and API integrations in enterprise environments.</p>
+          <p>Python for the full stack of unglamorous work -- ETL pipelines, internal tools, and automating the spreadsheet workflows that were eating analyst hours.</p>
           <div class="skill-tags">
             <span class="skill-tag">Python</span>
             <span class="skill-tag">pandas</span>
@@ -489,7 +487,7 @@
         <div class="skill-card reveal">
           <span class="skill-icon">◇</span>
           <h3>Data & BI</h3>
-          <p>End-to-end analytics — from SQL pipelines and warehousing through to dashboards and executive reporting.</p>
+          <p>SQL, Snowflake, Power BI. Built the team's first BI pipeline from raw operational data to executive dashboards. The hard part wasn't the tech -- it was getting six analysts to agree on one definition of the same KPI.</p>
           <div class="skill-tags">
             <span class="skill-tag">Snowflake</span>
             <span class="skill-tag">Power BI</span>
@@ -500,7 +498,7 @@
         <div class="skill-card reveal">
           <span class="skill-icon">○</span>
           <h3>Energy Systems</h3>
-          <p>Domain expertise in grid operations, outage coordination, power flow analysis, and transmission asset management.</p>
+          <p>Three years planning outages on a live national grid teaches you that "domain knowledge" means knowing which constraints are hard physics and which are just policy someone wrote in 2003 and nobody revisited.</p>
           <div class="skill-tags">
             <span class="skill-tag">Grid Ops</span>
             <span class="skill-tag">Power Flow</span>
@@ -510,7 +508,7 @@
         <div class="skill-card reveal">
           <span class="skill-icon">□</span>
           <h3>ML & Computer Vision</h3>
-          <p>Applied machine learning experience including real-time object detection and data augmentation for challenging environments.</p>
+          <p>YOLO-based object detection on edge hardware. Prioritised inference speed over model size because the deployment target was a drone, not a GPU server. Closed the accuracy gap with a custom augmentation pipeline rather than a bigger model.</p>
           <div class="skill-tags">
             <span class="skill-tag">PyTorch</span>
             <span class="skill-tag">YOLO</span>
@@ -520,7 +518,7 @@
         <div class="skill-card reveal">
           <span class="skill-icon">▽</span>
           <h3>Communication</h3>
-          <p>Bridging technical and business teams — training programmes, stakeholder reporting, process consulting, and mentoring.</p>
+          <p>The work that gets used is the work stakeholders understand. Built training programmes and documentation so the team could own the tools themselves -- not just run them when I was available.</p>
           <div class="skill-tags">
             <span class="skill-tag">Stakeholders</span>
             <span class="skill-tag">Training</span>
@@ -545,16 +543,17 @@
           <div class="project-number">PROJECT 01</div>
           <h3>National Grid Outage Scheduler</h3>
           <p>
-            A constraint-programming solver that generates the Annual Outage Plan for
-            New Zealand's electricity transmission grid. Automates what was previously
-            a multi-month manual planning process, optimising across hundreds of outages
-            with complex interdependencies and operational constraints.
+            The outage planning team was spending four months per year building a schedule in Excel.
+            Manual, error-prone, and producing plans that experienced analysts knew were suboptimal
+            -- but had no way to prove it. Reformulated the problem as a constraint satisfaction model
+            and built a CP-SAT solver on top of OR-Tools. The first version was a greedy heuristic.
+            It wasn't good enough. This is the second version.
           </p>
           <ul class="project-detail-list">
-            <li>Reduced planning turnaround from four months to one</li>
-            <li>Improved schedule efficiency by 25% with zero conflicts</li>
-            <li>Models dependencies, seasonal windows, and crew availability</li>
-            <li>In production use for national grid planning</li>
+            <li>Cut planning cycle from 4 months to 1 -- recovered time went into review and stakeholder alignment</li>
+            <li>25% improvement in schedule quality vs. the manual baseline</li>
+            <li>Every solver constraint traces back to a named business rule -- analysts can audit the output</li>
+            <li>In production for New Zealand's national grid planning cycle</li>
           </ul>
           <div class="project-tech">
             <span>Python</span>
@@ -575,16 +574,18 @@
           <div class="project-number">PROJECT 02</div>
           <h3>Outage Planning Analytics</h3>
           <p>
-            Established the team's first business intelligence framework — from data
-            warehousing through to automated dashboards used by executives, leaders,
-            and governance. Built Python automation that reduced weekly manual engineering
-            effort by 30%.
+            Six analysts, six spreadsheets, six definitions of the same KPI.
+            Reports reached leadership two or three days stale, nobody could audit the numbers,
+            and reporting effort scaled linearly with headcount. Built a Snowflake warehouse,
+            automated the ETL, and connected Power BI directly to a single source of truth.
+            The technical work was straightforward. Getting everyone to agree on one definition
+            of "active outage" was not.
           </p>
           <ul class="project-detail-list">
-            <li>Built the team's BI pipeline from scratch</li>
-            <li>Snowflake warehouse with Power BI dashboards</li>
-            <li>Python automation for assessment workflows</li>
-            <li>Created training programmes and technical standards</li>
+            <li>30% reduction in analyst time on reporting -- roughly 6 hours per analyst per week</li>
+            <li>Reports went from days-old static files to live, sub-minute data</li>
+            <li>All business logic is now version-controlled and auditable</li>
+            <li>Built training programmes so the team could own it without me</li>
           </ul>
           <div class="project-tech">
             <span>Snowflake</span>
@@ -605,15 +606,17 @@
           <div class="project-number">PROJECT 03</div>
           <h3>Underwater Object Detection</h3>
           <p>
-            Engineering capstone — a real-time YOLO-based detection system for
-            underwater drone swarms, identifying shellfish in visually challenging marine
-            environments. Improved detection performance through targeted data
-            augmentation simulating real underwater conditions.
+            Engineering capstone. Brief: detect shellfish on an underwater drone in real time.
+            Problem: training data looked nothing like actual ocean footage -- colour distortion,
+            suspended particles, near-zero contrast. Off-the-shelf YOLO performance was poor.
+            The fix wasn't a bigger model. It was a custom augmentation pipeline that simulated
+            the actual degradation conditions. First version failed badly. The augmentation
+            strategy came from analysing where it failed, not from the literature.
           </p>
           <ul class="project-detail-list">
-            <li>Real-time inference on underwater video feeds</li>
-            <li>+15% mAP under low-visibility conditions</li>
-            <li>Custom augmentation pipeline for marine environments</li>
+            <li>+15% mAP under low-visibility conditions -- at no inference cost</li>
+            <li>Traded model complexity for data quality to stay within edge hardware constraints</li>
+            <li>Kept inference fast enough for real-time deployment on the drone</li>
           </ul>
           <div class="project-tech">
             <span>PyTorch</span>
@@ -633,13 +636,15 @@
           <div class="project-number">PROJECT 04</div>
           <h3>Maritime Monitoring System</h3>
           <p>
-            Personal project exploring observability tooling — Prometheus and Grafana
-            with simulated maritime data for dashboards, alerting, and time-series
-            visualisation.
+            Side project to learn observability tooling properly.
+            Set up a full Prometheus/Grafana stack with simulated vessel telemetry.
+            Not because it was needed -- because you understand a monitoring tool
+            differently when you have had to configure its alerting at 11pm on a
+            Saturday and figure out why it isn't firing.
           </p>
           <ul class="project-detail-list">
-            <li>Prometheus metrics collection and alerting</li>
-            <li>Grafana dashboards for simulated vessel data</li>
+            <li>Prometheus metrics collection and alerting rules</li>
+            <li>Grafana dashboards for simulated vessel time-series data</li>
             <li>Available on GitHub</li>
           </ul>
           <div class="project-tech">
@@ -660,13 +665,14 @@
     <div class="container">
       <div class="section-header reveal">
         <div class="section-label">04 / Contact</div>
-        <h2 class="section-title">Let's connect</h2>
+        <h2 class="section-title">Get in touch</h2>
       </div>
       <div class="contact-content">
         <div class="contact-text reveal">
           <p>
-            I'm always up for conversations about optimisation, energy systems, data,
-            or interesting engineering problems. Based in Auckland, New Zealand.
+            If you're working on scheduling, optimisation, or data infrastructure problems --
+            or you just want to argue about solver choices -- get in touch.
+            Based in Auckland, New Zealand.
           </p>
         </div>
         <ul class="contact-links reveal">
