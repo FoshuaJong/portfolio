@@ -391,11 +391,11 @@
         <div class="hero-label">Operations Research · Optimisation · Data</div>
         <h1>
           Josh Fong
-          <span class="thin">Engineering Scientist -- Operations Research</span>
+          <span class="thin">Engineering Scientist, Operations Research</span>
         </h1>
         <p class="hero-text">
           I build optimisation and scheduling systems for New Zealand's national electricity grid.
-          The problems are genuinely hard -- combinatorial, safety-critical, and politically loaded.
+          The problems are genuinely hard: combinatorial, safety-critical, and politically loaded.
           The tools are constraint solvers, Python, and a lot of patience with Excel files I did not create.
         </p>
         <div class="hero-cta">
@@ -416,7 +416,7 @@
       <div class="about-grid">
         <div class="about-text reveal">
           <p>
-            I'm an Operations Planning Engineer at <strong>Transpower New Zealand</strong> --
+            I'm an Operations Planning Engineer at <strong>Transpower New Zealand</strong>,
             the state-owned enterprise that runs the national transmission grid.
             My team decides when the grid goes offline for maintenance. Getting that
             wrong has real consequences, so the scheduling constraints aren't academic.
@@ -465,7 +465,7 @@
         <div class="skill-card reveal">
           <span class="skill-icon">⬡</span>
           <h3>Optimisation & OR</h3>
-          <p>CP-SAT and MIP for scheduling problems with hard physical constraints. Not research-grade -- production systems where a solver timeout is someone's planning cycle.</p>
+          <p>CP-SAT and MIP for scheduling problems with hard physical constraints. Not research-grade. Production systems where a solver timeout is someone's planning cycle.</p>
           <div class="skill-tags">
             <span class="skill-tag">CP-SAT</span>
             <span class="skill-tag">OR-Tools</span>
@@ -476,7 +476,7 @@
         <div class="skill-card reveal">
           <span class="skill-icon">△</span>
           <h3>Python & Software</h3>
-          <p>Python for the full stack of unglamorous work -- ETL pipelines, internal tools, and automating the spreadsheet workflows that were eating analyst hours.</p>
+          <p>Python for the full stack of unglamorous work: ETL pipelines, internal tools, and automating the spreadsheet workflows that were eating analyst hours.</p>
           <div class="skill-tags">
             <span class="skill-tag">Python</span>
             <span class="skill-tag">pandas</span>
@@ -487,7 +487,7 @@
         <div class="skill-card reveal">
           <span class="skill-icon">◇</span>
           <h3>Data & BI</h3>
-          <p>SQL, Snowflake, Power BI. Built the team's first BI pipeline from raw operational data to executive dashboards. The hard part wasn't the tech -- it was getting six analysts to agree on one definition of the same KPI.</p>
+          <p>SQL, Snowflake, Power BI. Built the team's first BI pipeline from raw operational data to executive dashboards. The hard part wasn't the tech. It was getting six analysts to agree on one definition of the same KPI.</p>
           <div class="skill-tags">
             <span class="skill-tag">Snowflake</span>
             <span class="skill-tag">Power BI</span>
@@ -518,7 +518,7 @@
         <div class="skill-card reveal">
           <span class="skill-icon">▽</span>
           <h3>Communication</h3>
-          <p>The work that gets used is the work stakeholders understand. Built training programmes and documentation so the team could own the tools themselves -- not just run them when I was available.</p>
+          <p>The work that gets used is the work stakeholders understand. Built training programmes and documentation so the team could own the tools themselves, not just run them when I was available.</p>
           <div class="skill-tags">
             <span class="skill-tag">Stakeholders</span>
             <span class="skill-tag">Training</span>
@@ -544,15 +544,15 @@
           <h3>National Grid Outage Scheduler</h3>
           <p>
             The outage planning team was spending four months per year building a schedule in Excel.
-            Manual, error-prone, and producing plans that experienced analysts knew were suboptimal
-            -- but had no way to prove it. Reformulated the problem as a constraint satisfaction model
+            Manual, error-prone, and producing plans that experienced analysts knew were suboptimal,
+            but had no way to prove it. Reformulated the problem as a constraint satisfaction model
             and built a CP-SAT solver on top of OR-Tools. The first version was a greedy heuristic.
             It wasn't good enough. This is the second version.
           </p>
           <ul class="project-detail-list">
-            <li>Cut planning cycle from 4 months to 1 -- recovered time went into review and stakeholder alignment</li>
+            <li>Cut planning cycle from 4 months to 1. Recovered time went into review and stakeholder alignment</li>
             <li>25% improvement in schedule quality vs. the manual baseline</li>
-            <li>Every solver constraint traces back to a named business rule -- analysts can audit the output</li>
+            <li>Every solver constraint traces back to a named business rule. Analysts can audit the output</li>
             <li>In production for New Zealand's national grid planning cycle</li>
           </ul>
           <div class="project-tech">
@@ -582,7 +582,7 @@
             of "active outage" was not.
           </p>
           <ul class="project-detail-list">
-            <li>30% reduction in analyst time on reporting -- roughly 6 hours per analyst per week</li>
+            <li>30% reduction in analyst time on reporting (roughly 6 hours per analyst per week)</li>
             <li>Reports went from days-old static files to live, sub-minute data</li>
             <li>All business logic is now version-controlled and auditable</li>
             <li>Built training programmes so the team could own it without me</li>
@@ -607,14 +607,14 @@
           <h3>Underwater Object Detection</h3>
           <p>
             Engineering capstone. Brief: detect shellfish on an underwater drone in real time.
-            Problem: training data looked nothing like actual ocean footage -- colour distortion,
+            Problem: training data looked nothing like actual ocean footage. Colour distortion,
             suspended particles, near-zero contrast. Off-the-shelf YOLO performance was poor.
             The fix wasn't a bigger model. It was a custom augmentation pipeline that simulated
             the actual degradation conditions. First version failed badly. The augmentation
             strategy came from analysing where it failed, not from the literature.
           </p>
           <ul class="project-detail-list">
-            <li>+15% mAP under low-visibility conditions -- at no inference cost</li>
+            <li>+15% mAP under low-visibility conditions, at no inference cost</li>
             <li>Traded model complexity for data quality to stay within edge hardware constraints</li>
             <li>Kept inference fast enough for real-time deployment on the drone</li>
           </ul>
@@ -638,7 +638,7 @@
           <p>
             Side project to learn observability tooling properly.
             Set up a full Prometheus/Grafana stack with simulated vessel telemetry.
-            Not because it was needed -- because you understand a monitoring tool
+            Not because it was needed. Because you understand a monitoring tool
             differently when you have had to configure its alerting at 11pm on a
             Saturday and figure out why it isn't firing.
           </p>
@@ -670,8 +670,8 @@
       <div class="contact-content">
         <div class="contact-text reveal">
           <p>
-            If you're working on scheduling, optimisation, or data infrastructure problems --
-            or you just want to argue about solver choices -- get in touch.
+            If you're working on scheduling, optimisation, or data infrastructure problems,
+            or you just want to argue about solver choices, get in touch.
             Based in Auckland, New Zealand.
           </p>
         </div>
